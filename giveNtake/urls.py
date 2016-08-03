@@ -17,6 +17,7 @@ from django.conf.urls import url,include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^', include('list.urls')),
+    url(r'^lend/', include('lendlist.urls')),
+    url(r'^borrow/', include('borrowlist.urls')),
     url(r'^admin/', admin.site.urls),
 ]

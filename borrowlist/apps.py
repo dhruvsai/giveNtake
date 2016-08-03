@@ -3,5 +3,5 @@ from __future__ import unicode_literals
 from django.apps import AppConfig
 
 
-class ListConfig(AppConfig):
-    name = 'list'
+class BorrowlistConfig(AppConfig):
+    name = 'borrowlist'
