@@ -38,9 +38,13 @@
                 <span class="list-item">You <strong>gave </strong> {{post.item}} to {{post.person}} !</span>
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                  Get Started
-                </a>
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{post.id}}">
+                  <input type="checkbox" id="{{post.id}}" class="mdl-checkbox__input">
+                  <span class="mdl-checkbox__label">If Returned</span>
+                </label>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                  Edit
+                </button>
               </div>
             </div>
             {% endfor %}

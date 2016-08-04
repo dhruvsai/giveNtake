@@ -17,3 +17,16 @@
 .demo-card-wide > .mdl-card__actions{
   height: 10px;
 }
+.mdl-card__actions > .mdl-checkbox{
+    clear: both;
+    float:left;
+    margin-right:15px;
+    margin-left: 15px;
+    width:300px;
+}
+.mdl-card__actions > .mdl-button{
+    clear: both;
+    float:right;
+    margin-right:15px;
+    margin-top: -29px;
+}
