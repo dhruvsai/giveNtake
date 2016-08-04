@@ -13,7 +13,7 @@ class LendBorrowPost(models.Model):
     	            (borrow,'Borrow')
     	            )
     
-	post = models.CharField(max_length = 2,choices  = post_choices,default = lend)
+	post_type = models.CharField(max_length = 2,choices  = post_choices,default = lend)
     item = models.CharField(max_length=200, default="unnamed object")
     pub_date = models.DateTimeField('lending date')
     person = models.CharField(max_length=200, default= "anonymous person")
