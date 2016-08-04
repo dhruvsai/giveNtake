@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 @python_2_unicode_compatible
-class LendPost(models.Model):
+class ListPost(models.Model):
     item = models.CharField(max_length=200, default="unnamed object")
     pub_date = models.DateTimeField('date')
     person = models.CharField(max_length=200, default= "anonymous person")

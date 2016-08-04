@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BorrowPost
+from .models import ListPost
 # Register your models here.
 
-admin.site.register(BorrowPost)
+admin.site.register(ListPost)

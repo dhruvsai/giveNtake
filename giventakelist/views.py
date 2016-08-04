@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import LendPost
+from .models import ListPost
 
 # Create your views here.
 
 def index(request):
-    posts = LendPost.objects.all()
+    posts = ListPost.objects.all()
     context={
     "posts" : posts
     }
