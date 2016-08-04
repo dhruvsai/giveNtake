@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>giveNtake</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'giventakelist/custom.css' %}" />
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  </head>
+  <body>
+        <!-- Simple header with scrollable tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-drawer-button">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Give N Take</span>
+        </div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+          <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Lends</a>
+          <a href="#scroll-tab-2" class="mdl-layout__tab">Borrows</a>
+        </div>
+      </header>
+      <main class="mdl-layout__content">
+        <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+          <div class="page-content">
+
+            <!-- Your content goes here -->
+            {% if posts%}
+            {% for post in posts %}
+            <div class="demo-card-wide mdl-card mdl-shadow--4dp">
+              <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">{{post.pub_date}} #{{post.id}}</h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="list-item">You <strong>gave </strong> {{post.item}} to {{post.person}} !</span>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                  Get Started
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+            {% else %}
+              <p> You haven't given anything to anyone </p>
+            {% endif %}
+
+
+          </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="scroll-tab-2">
+          <div class="page-content">
+
+            <!-- Your content goes here -->
+
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

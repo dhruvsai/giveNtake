@@ -1,0 +1,19 @@
+.demo-card-wide.mdl-card {
+  width: 800px;
+  margin: 20px auto 0;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #444;
+  height: 60px;
+  background: pink;
+}
+.demo-card-wide > .mdl-card__supporting-text{
+  height: 60px;
+  font-size: 1.8em;
+}
+.mdl-card__supporting-text{
+  line-height: 50px;
+}
+.demo-card-wide > .mdl-card__actions{
+  height: 10px;
+}

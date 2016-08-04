@@ -9,5 +9,5 @@ def index(request):
     context={
     "posts" : posts
     }
-    template='lendlist/index.html'
+    template='giventakelist/index1.html'
     return render(request,template,context)
