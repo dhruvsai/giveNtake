@@ -11,6 +11,6 @@ class ListPost(models.Model):
     person = models.CharField(max_length=200, default= "anonymous person")
     ifreturned = models.BooleanField(default=False)
     return_date = models.DateTimeField('return date',blank=True,null=True)
-    lendOrPost = models.BooleanField(default=False)
+    lendOrBorrow = models.BooleanField(default=False)
     def __str__(self):
         return (self.item)

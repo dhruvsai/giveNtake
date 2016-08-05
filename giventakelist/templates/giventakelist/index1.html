@@ -30,23 +30,25 @@
             <!-- Your content goes here -->
             {% if posts%}
             {% for post in posts %}
-            <div class="demo-card-wide mdl-card mdl-shadow--4dp">
-              <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">{{post.pub_date}} #{{post.id}}</h2>
-              </div>
-              <div class="mdl-card__supporting-text">
-                <span class="list-item">You <strong>gave </strong> {{post.item}} to {{post.person}} !</span>
-              </div>
-              <div class="mdl-card__actions mdl-card--border">
-                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{post.id}}">
-                  <input type="checkbox" id="{{post.id}}" class="mdl-checkbox__input">
-                  <span class="mdl-checkbox__label">If Returned</span>
-                </label>
-                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
-                  Edit
-                </button>
-              </div>
-            </div>
+              {% if post.lendOrBorrow == 0 %}
+                <div class="demo-card-wide mdl-card mdl-shadow--4dp">
+                  <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">{{post.pub_date}} #{{post.id}}</h2>
+                  </div>
+                  <div class="mdl-card__supporting-text">
+                    <span class="list-item">You <strong>gave </strong> {{post.item}} to {{post.person}} !</span>
+                  </div>
+                  <div class="mdl-card__actions mdl-card--border">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{post.id}}">
+                      <input type="checkbox" id="{{post.id}}" class="mdl-checkbox__input" onchange="ifReturned(this)">
+                      <span class="mdl-checkbox__label">If Returned</span>
+                    </label>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              {% endif %}
             {% endfor %}
             {% else %}
               <p> You haven't given anything to anyone </p>
@@ -58,11 +60,39 @@
         <section class="mdl-layout__tab-panel" id="scroll-tab-2">
           <div class="page-content">
 
-            <!-- Your content goes here -->
+            {% if posts%}
+            {% for post in posts %}
+              {% if post.lendOrBorrow == 1 %}
+                <div class="demo-card-wide mdl-card mdl-shadow--4dp">
+                  <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">{{post.pub_date}} #{{post.id}}</h2>
+                  </div>
+                  <div class="mdl-card__supporting-text">
+                    <span class="list-item">You <strong>took </strong> {{post.item}} from {{post.person}} !</span>
+                  </div>
+                  <div class="mdl-card__actions mdl-card--border">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{post.id}}">
+                      <input type="checkbox" id="{{post.id}}" class="mdl-checkbox__input" onchange="ifReturned(this)">
+                      <span class="mdl-checkbox__label">If Returned</span>
+                    </label>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+            {% else %}
+              <p> You haven't given anything to anyone </p>
+            {% endif %}
 
           </div>
         </section>
       </main>
     </div>
+
+    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src="{% static 'giventakelist/script.js' %}"></script>
+
   </body>
 </html>
