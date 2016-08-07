@@ -3,9 +3,11 @@ from django.http import HttpResponse
 from .models import ListPost
 from django.utils import timezone
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
 
 # Create your views here.
-
+@csrf_exempt
 def index(request):
     print "index requested"
     posts = ListPost.objects.all()
@@ -14,8 +16,10 @@ def index(request):
     }
     template='giventakelist/index1.html'
     return render(request,template,context)
+
+@csrf_exempt    
 def update_isreturned(request):
-    print "requested"
+    #print "requested"
     if request.method == "POST":
         try:
             id = request.POST.get('id')
@@ -25,8 +29,11 @@ def update_isreturned(request):
             #post.return_date = timezone.now
             post.save()
             print post.ifreturned
-            responsedata = {"status" : 200}
-            return JsonResponse(responsedata)
+            posts = ListPost.objects.all()
+            print posts
+            return render(request,'giventakelist/list.html',{"posts":posts})
+            #responsedata = {"status" : 200}
+            #return JsonResponse(responsedata)
         except:
             return HttpResponse("not found")
     return HttpResponse("Nothing to do here")

@@ -1,23 +1,26 @@
-// jQuery.fn.extend({
-//     zigzag: function () {
-//         var text = $(this).text();
-//         var zigzagText = '';
-//         var toggle = true; //lower/uppper toggle
-// 			$.each(text, function(i, nome) {
-// 				zigzagText += (toggle) ? nome.toUpperCase() : nome.toLowerCase();
-// 				toggle = (toggle) ? false : true;
-// 			});
-// 	return zigzagText;
-//     }
-// });
 var ifReturned;
 
 $(document).ready(function(){
-  var s = "{{posts}}";
-  console.log(s);
-    // console.log(x.id);
+
+  //initx function to render DOM
+    var initx = function(){
+      var checkboxes = $(".ifreturned");
+      checkboxes.each(function(item){
+        if($(this).attr("ifreturned") == "True"){
+          // console.log($(this).attr("ifreturned"));
+          $(this).css("color","#d9d9d9");
+          $(this).css("text-decoration","line-through");
+          $(this).parent().next().find(".mdl-checkbox").get(0).MaterialCheckbox.check();
+          // console.log(cb.checked);
+        }
+      });
+    }
+
+
+
+// ifReturned function to handle checkbox change event
     ifReturned= function(x){
-       console.log("called");
+      //  console.log("called");
        var c = x.checked ? "#d9d9d9":"rgba(0,0,0,.54)";
        var t = x.checked ? "line-through":"none";
        // console.log(c);
@@ -27,45 +30,43 @@ $(document).ready(function(){
          type: "POST",
          data: {id : x.id},
          success: function(data){
-           x = $(x);
-           // console.log("mydata" + data);
-           var y = x.parent().parent().prev().children();
-           // console.log(y);
-           y.css("color",c);
-           y.css('text-decoration',t);
+          //  console.log(data);
+           $("#listdiv").html(data);
+           componentHandler.upgradeDom();
+           initx();
+          //  x = $(x);
+          //  // console.log("mydata" + data);
+          //  var y = x.parent().parent().prev().children();
+          //  // console.log(y);
+          //  y.css("color",c);
+          //  y.css('text-decoration',t);
          },
          error:function(data){
            console.log("error");
          }
        });
    }
-$(".mdl-checkbox__input").change(function(){
-  console.log(this);
+
+   //jquery event listener for chekbox change
+$("body").on('change','.mdl-checkbox__input',function(){
+  // console.log("called");
+  // console.log(this);
   var x = this;
-  ifReturned(this);
+  // ifReturned(this);
+  // var p = $(this).parent().parent().parent();
+  // console.log(p);
+  setTimeout(function(){
+      ifReturned(x);
+  },1000);
   var p = $(this).parent().parent().parent();
   console.log(p);
-  p.removeClass('animated pulse slideInUp').addClass('animated pulse').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+  p.removeClass('animated pulse').addClass('animated pulse').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
         $(this).removeClass('animated pulse');
     });
-  p.addClass('animated pulse');
-});
-(function(){
-  var checkboxes = $(".ifreturned");
 
-  checkboxes.each(function(item){
-    // console.log("yay");
-    // console.log($(this).attr("ifreturned") == "True");
-    if($(this).attr("ifreturned") == "True"){
-      // console.log($(this).attr("ifreturned"));
-      $(this).css("color","#d9d9d9");
-      $(this).css("text-decoration","line-through");
-      $(this).parent().next().find(".mdl-checkbox").get(0).MaterialCheckbox.check();
-      console.log("yo " + $(this).parent().next().find(".mdl-checkbox").is(":checked"));
-      // console.log(cb.checked);
-    }
-  });
-})();
+});
+
+(initx)();
   // This function gets cookie with a given name
 
     function getCookie(name) {
