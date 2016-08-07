@@ -10,51 +10,59 @@
 // 	return zigzagText;
 //     }
 // });
-
+var ifReturned;
 
 $(document).ready(function(){
-
-  function ifReturned(x){
-    console.log(x.checked);
-    var c = x.checked ? "#d9d9d9":"rgba(0,0,0,.54)";
-    var t = x.checked ? "line-through":"none";
-    console.log(c);
-    console.log(t);
     // console.log(x.id);
-    $.ajax({
-      url: "/list/update_isreturned",
-      type: "POST",
-      data: {id : x.id},
-      success: function(data){
-        x = $(x);
-        // console.log("mydata" + data);
-        var y = x.parent().parent().prev().children();
-        console.log(y);
-        y.css("color",c);
-        y.css('text-decoration',t);
-      },
-      error:function(data){
-        console.log(data);
-      }
-    });
-
-
-  }
-  // This function gets cookie with a given name
+    ifReturned= function(x){
+       console.log("called");
+       var c = x.checked ? "#d9d9d9":"rgba(0,0,0,.54)";
+       var t = x.checked ? "line-through":"none";
+       // console.log(c);
+       // console.log(t);
+       $.ajax({
+         url: "/list/update_isreturned",
+         type: "POST",
+         data: {id : x.id},
+         success: function(data){
+           x = $(x);
+           // console.log("mydata" + data);
+           var y = x.parent().parent().prev().children();
+           // console.log(y);
+           y.css("color",c);
+           y.css('text-decoration',t);
+         },
+         error:function(data){
+           console.log("error");
+         }
+       });
+   }
+$(".mdl-checkbox__input").change(function(){
+  console.log(this);
+  var x = this;
+  setTimeout(function(){
+    console.log(x.checked) }, 3000);
+  console.log(this.checked);
+  ifReturned(this);
+});
+(function(){
   var checkboxes = $(".ifreturned");
 
   checkboxes.each(function(item){
     // console.log("yay");
     // console.log($(this).attr("ifreturned") == "True");
     if($(this).attr("ifreturned") == "True"){
-      console.log($(this).attr("ifreturned"));
+      // console.log($(this).attr("ifreturned"));
       $(this).css("color","#d9d9d9");
       $(this).css("text-decoration","line-through");
-      var cb = $(this).parent().next().children().addClass("is-checked");
-      // console.log(cb.prop('checked',true));
+      $(this).parent().next().find(".mdl-checkbox").get(0).MaterialCheckbox.check();
+      console.log("yo " + $(this).parent().next().find(".mdl-checkbox").is(":checked"));
       // console.log(cb.checked);
     }
   });
+})();
+  // This function gets cookie with a given name
+
     function getCookie(name) {
         var cookieValue = null;
         if (document.cookie && document.cookie != '') {
