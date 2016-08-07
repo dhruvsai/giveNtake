@@ -14,3 +14,5 @@ class ListPost(models.Model):
     lendOrBorrow = models.BooleanField(default=False)
     def __str__(self):
         return (self.item)
+    class Meta:
+        ordering = ('ifreturned', 'pub_date')

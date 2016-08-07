@@ -13,6 +13,8 @@
 var ifReturned;
 
 $(document).ready(function(){
+  var s = "{{posts}}";
+  console.log(s);
     // console.log(x.id);
     ifReturned= function(x){
        console.log("called");
@@ -40,10 +42,13 @@ $(document).ready(function(){
 $(".mdl-checkbox__input").change(function(){
   console.log(this);
   var x = this;
-  setTimeout(function(){
-    console.log(x.checked) }, 3000);
-  console.log(this.checked);
   ifReturned(this);
+  var p = $(this).parent().parent().parent();
+  console.log(p);
+  p.removeClass('animated pulse slideInUp').addClass('animated pulse').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+        $(this).removeClass('animated pulse');
+    });
+  p.addClass('animated pulse');
 });
 (function(){
   var checkboxes = $(".ifreturned");

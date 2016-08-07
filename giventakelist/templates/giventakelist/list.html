@@ -1,0 +1,25 @@
+{% if posts%}
+{% for post in posts %}
+  {% if post.lendOrBorrow == 0 %}
+    <div class="demo-card-wide mdl-card mdl-shadow--4dp animated slideInUp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">{{post.pub_date}} #{{post.id}}</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <span class="list-item ifreturned" ifreturned="{{post.ifreturned}}">You <strong>gave </strong> {{post.item}} to {{post.person}} !</span>
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{post.id}}">
+          <input type="checkbox" id="{{post.id}}" class="mdl-checkbox__input" >
+          <!-- <span class="mdl-checkbox__label">If Returned</span> -->
+        </label>
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+          Edit
+        </button>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+{% else %}
+  <p> You haven't given anything to anyone </p>
+{% endif %}
