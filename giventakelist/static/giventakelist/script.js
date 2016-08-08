@@ -10,7 +10,6 @@ $(document).ready(function(){
           // console.log($(this).attr("ifreturned"));
           $(this).css("color","#d9d9d9");
           $(this).css("text-decoration","line-through");
-          $(this).parent().next().find(".mdl-checkbox").get(0).MaterialCheckbox.check();
           // console.log(cb.checked);
         }
       });
@@ -118,5 +117,25 @@ $("body").on('change','.mdl-checkbox__input',function(){
             }
         }
     });
+
+
+    (function() {
+      'use strict';
+      var dialogButton = document.querySelector('.dialog-button');
+      var dialog = document.querySelector('#dialog');
+      if (! dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+      }
+      dialogButton.addEventListener('click', function() {
+         dialog.showModal();
+      });
+      dialog.querySelectorAll('button').forEach(function(button) {
+      button.addEventListener('click', function() {
+        console.log("y0");
+        dialog.close();
+      });
+    });
+    }());
+
 
 });

@@ -236,3 +236,9 @@ html, body {
 .mdl-demo .mdl-menu__container {
   z-index: 99;
 }
+#add{
+  position:absolute;
+  right: 40px;
+  top:36px;
+  z-index:999;
+}
