@@ -1,0 +1,77 @@
+.demo-card-wide.mdl-card {
+  width: 800px;
+  margin: 20px auto 0;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #444;
+  height: 60px;
+  background: pink;
+}
+.demo-card-wide > .mdl-card__supporting-text{
+  height: 60px;
+  font-size: 1.8em;
+}
+.mdl-card__supporting-text{
+  line-height: 50px;
+}
+.demo-card-wide > .mdl-card__actions{
+  height: 10px;
+}
+.mdl-card__actions > .mdl-checkbox{
+    clear: both;
+    float:left;
+    margin-right:15px;
+    margin-left: 15px;
+    width:300px;
+}
+.mdl-card__actions > .mdl-button{
+    clear: both;
+    float:right;
+    margin-right:15px;
+    margin-top: -29px;
+}
+#add {
+  position: absolute;
+  right: 120px;
+  top: 20px;
+  z-index: 999;
+}
+
+.mdl-dialog {
+  border: none;
+  box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
+  width: 280px; }
+  .mdl-dialog__title {
+    padding: 24px 24px 0;
+    margin: 0;
+    font-size: 2.5rem; }
+  .mdl-dialog__actions {
+    padding: 8px 8px 8px 24px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row-reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; }
+    .mdl-dialog__actions > * {
+      margin-right: 8px;
+      height: 36px; }
+      .mdl-dialog__actions > *:first-child {
+        margin-right: 0; }
+    .mdl-dialog__actions--full-width {
+      padding: 0 0 8px 0; }
+      .mdl-dialog__actions--full-width > * {
+        height: 48px;
+        -webkit-flex: 0 0 100%;
+            -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+        padding-right: 16px;
+        margin-right: 0;
+        text-align: right; }
+  .mdl-dialog__content {
+    padding: 20px 24px 24px 24px;
+    color: rgba(0,0,0, 0.54);
+}
